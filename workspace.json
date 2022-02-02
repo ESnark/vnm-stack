@@ -1,6 +1,15 @@
 {
   "version": 2,
   "projects": {
-    "gateway-api": "apps/gateway/api"
+    "back-office-api": "apps/back-office/api",
+    "back-office-app": "apps/back-office/app",
+    "configuration-api": "apps/configuration/api",
+    "configuration-app": "apps/configuration/app",
+    "dashboard-api": "apps/dashboard/api",
+    "dashboard-app": "apps/dashboard/app",
+    "domain": "libs/domain",
+    "gateway-api": "apps/gateway/api",
+    "gateway-app": "apps/gateway/app",
+    "shared": "libs/shared"
   }
 }
