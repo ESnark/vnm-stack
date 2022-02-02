@@ -1,1 +1,2 @@
-export * from './lib/shared.module';
+export * from './lib/configuration/config.model';
+export * from './lib/configuration/config.service';
