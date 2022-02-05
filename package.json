@@ -5,7 +5,15 @@
   "scripts": {
     "start": "nx serve",
     "build": "nx build",
-    "test": "nx test"
+    "test": "nx test",
+    "build:gateway-api": "nx build gateway-api",
+    "build:dashboard-api": "nx build dashboard-api",
+    "build:configuration-api": "nx build configuration-api",
+    "build:back-office-api": "nx build back-office-api",
+    "start:gateway-api": "nx serve gateway-api",
+    "start:dashboard-api": "nx serve dashboard-api",
+    "start:configuration-api": "nx serve configuration-api",
+    "start:back-office-api": "nx serve back-office-api"
   },
   "private": true,
   "dependencies": {

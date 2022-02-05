@@ -1,0 +1,45 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Dashboard API",
+      "program": "${workspaceFolder}/apps/dashboard/api/src/main.ts",
+      "preLaunchTask": "build:dashboard-api",
+      "outFiles": [
+        "${workspaceFolder}/dist/apps/dashboard/api/**/*.js"
+      ]
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Gateway API",
+      "program": "${workspaceFolder}/apps/gateway/api/src/main.ts",
+      "preLaunchTask": "build:gateway-api",
+      "outFiles": [
+        "${workspaceFolder}/dist/apps/gateway/api/**/*.js"
+      ]
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Configuration API",
+      "program": "${workspaceFolder}/apps/configuration/api/src/main.ts",
+      "preLaunchTask": "build:configuration-api",
+      "outFiles": [
+        "${workspaceFolder}/dist/apps/configuration/api/**/*.js"
+      ]
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Back-Office API",
+      "program": "${workspaceFolder}/apps/back-office/api/src/main.ts",
+      "preLaunchTask": "build:back-office-api",
+      "outFiles": [
+        "${workspaceFolder}/dist/apps/back-office/api/**/*.js"
+      ]
+    }
+  ]
+}
