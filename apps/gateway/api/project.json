@@ -21,6 +21,14 @@
             {
               "replace": "apps/gateway/api/src/environments/environment.ts",
               "with": "apps/gateway/api/src/environments/environment.prod.ts"
+            },
+            {
+              "replace": "apps/gateway/api/src/environments/config.json",
+              "with": "apps/gateway/api/src/environments/config.prod.json"
+            },
+            {
+              "replace": "apps/gateway/api/src/environments/orm-config.json",
+              "with": "apps/gateway/api/src/environments/orm-config.prod.json"
             }
           ]
         }

@@ -1,0 +1,10 @@
+{
+  "HOST": "localhost",
+  "PORT": 3306,
+  "USER": "root",
+  "PASSWORD": "",
+  "DATABASE": "vnm-stack",
+  "ENTITIES": ["libs/domain/src/lib/entities/**/*.entity.ts"],
+  "MODE": "production",
+  "SYNC": false
+}

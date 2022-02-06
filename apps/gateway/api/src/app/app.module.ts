@@ -1,11 +1,20 @@
 import { Module } from '@nestjs/common';
-import { ServeStaticModule } from '@nestjs/serve-static';
-import { GatewayApiAppService } from '@vnm/domain';
-import { PrismaClientService } from '@vnm/shared';
 import { join } from 'path';
+import { getMetadataArgsStorage } from 'typeorm';
 
-import { AppController } from './app.controller';
+// Modules
+import { ServeStaticModule } from '@nestjs/serve-static';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { EntitiesModule } from '@vnm/domain';
 import { DashboardModule } from './dashboard/dashboard.module';
+
+// Services
+import { GatewayApiAppService } from '@vnm/domain';
+import { ormConfigService } from '@vnm/shared';
+
+// Controllers
+import { AppController } from './app.controller';
+import { UserController } from './user/user.controller';
 
 @Module({
   imports: [
@@ -13,9 +22,14 @@ import { DashboardModule } from './dashboard/dashboard.module';
       rootPath: join(__dirname, 'public'),
       exclude: ['/api/gateway*', '/api/dashboard*', '/dashboard*', '/configuration*', '/back-office*'],
     }),
+    TypeOrmModule.forRoot({
+      ...ormConfigService.getTypeOrmConfig(),
+      entities: getMetadataArgsStorage().tables.map(tbl => tbl.target)
+    }),
     DashboardModule,
+    EntitiesModule,
   ],
-  controllers: [AppController],
-  providers: [GatewayApiAppService, PrismaClientService],
+  controllers: [AppController, UserController],
+  providers: [GatewayApiAppService],
 })
 export class AppModule {}

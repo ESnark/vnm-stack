@@ -16,3 +16,10 @@ export const loadGatewayConfiguration = (message = '[LOAD] config.json file'): G
 
   return JSON.parse(jsonFile);
 }
+
+export const loadOrmConfiguration = (message = '[LOAD] orm-config.json file'): GatewayConfiguration => {
+  console.log(`${message}:`, `${__dirname}/environments/orm-config.json`);
+  const jsonFile = fs.readFileSync(join(__dirname, 'environments', 'orm-config.json'), 'utf8');
+
+  return JSON.parse(jsonFile);
+}
