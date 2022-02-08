@@ -1,5 +1,5 @@
 import { Body, Controller, Post, Get, Put, Delete, Param, UseGuards } from '@nestjs/common'
-import { UserService, User } from '@vnm/domain'
+import { UserService, User, JwtAuthGuard } from '@vnm/domain'
 
 @Controller('api/gateway/user')
 export class UserController {
@@ -15,19 +15,19 @@ export class UserController {
     return this.service.findAll()
   }
 
-  // @UseGuards() // 추후 구현
-  @Get(':username')
+  @UseGuards(JwtAuthGuard)
+  @Get(':name')
   findOne(@Param() name: string): Promise<User | undefined> {
     return this.service.findOne(name)
   }
 
-  // @UseGuards() // 추후 구현
+  @UseGuards(JwtAuthGuard)
   @Put(':id')
   updateOne(@Param() id: number, @Body() data: User): Promise<any> {
     return this.service.updateOne(id, data)
   }
 
-  // @UseGuards() // 추후 구현
+  @UseGuards()
   @Delete(':id')
   deleteOne(@Param() id: number): Promise<any> {
     return this.service.deleteOne(id)

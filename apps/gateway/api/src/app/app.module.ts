@@ -5,7 +5,7 @@ import { getMetadataArgsStorage } from 'typeorm';
 // Modules
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { EntitiesModule } from '@vnm/domain';
+import { AuthModule, EntitiesModule } from '@vnm/domain';
 import { DashboardModule } from './dashboard/dashboard.module';
 
 // Services
@@ -15,6 +15,7 @@ import { ormConfigService } from '@vnm/shared';
 // Controllers
 import { AppController } from './app.controller';
 import { UserController } from './user/user.controller';
+import { AuthController } from './auth/auth.controller';
 
 @Module({
   imports: [
@@ -28,8 +29,9 @@ import { UserController } from './user/user.controller';
     }),
     DashboardModule,
     EntitiesModule,
+    AuthModule,
   ],
-  controllers: [AppController, UserController],
+  controllers: [AppController, UserController, AuthController],
   providers: [GatewayApiAppService],
 })
 export class AppModule {}

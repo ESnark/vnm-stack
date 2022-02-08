@@ -25,8 +25,8 @@ export class UserService {
     return this.repository.find();
   }
 
-  findOne(name: string): Promise<User | undefined> {
-    return this.repository.findOne({ name });
+  findOne(email: string): Promise<User | undefined> {
+    return this.repository.findOne({ email });
   }
 
   deleteOne(id: number): Promise<any> {

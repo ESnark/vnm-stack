@@ -5,4 +5,4 @@ export const bcryptHash = (plainText: string, saltOrRound = 10): Promise<string>
 }
 
 export const bcryptCompare =
-  (plainText: string, hashedMessage: string): Promise<boolean> => bcryptCompare(plainText, hashedMessage)
+  (plainText: string, hashedMessage: string): Promise<boolean> => bcrypt.compare(plainText, hashedMessage)

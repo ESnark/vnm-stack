@@ -10,6 +10,10 @@ export interface MicroServiceConfiguration {
 export interface GatewayConfiguration {
   HTTP_PORT?: number;
   GLOBAL_API_PREFIX?: string;
+  AUTH: {
+    SECRET: string,
+    EXPIRED_ON: string
+  },
   DASHBOARD?: MicroServiceConfiguration;
   CONFIGURATION?: MicroServiceConfiguration;
   BACK_OFFICE?: MicroServiceConfiguration;
