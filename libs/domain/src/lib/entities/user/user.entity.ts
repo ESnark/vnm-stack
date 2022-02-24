@@ -1,4 +1,4 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn } from 'typeorm';
 
 @Entity('user')
 export class UserEntity {
@@ -14,7 +14,16 @@ export class UserEntity {
   @Column()
   email!: string;
 
-  // USER, ADMIN, SUPER
-  @Column({ default: 'USER' })
+  // GUEST, USER, ADMIN, SUPER
+  @Column({ default: 'GUEST' })
   role!: string;
+
+  @CreateDateColumn({ name: 'created_at', select: false })
+  createdAt?: Date;
+
+  @CreateDateColumn({ name: 'updated_at', select: false })
+  updatedAt?: Date;
+
+  @Column({ name: 'current_hashed_refresh_token', nullable: true })
+  currentHashedRefreshToken?: string;
 }

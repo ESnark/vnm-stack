@@ -1,7 +1,7 @@
 import { Injectable, UnauthorizedException } from "@nestjs/common";
 import { JwtService } from '@nestjs/jwt'
 
-import { User } from '../entities/user/user.model'
+import { User } from '@vnm/model'
 import { UserService } from '../entities/user/user.service'
 import { bcryptCompare } from '../utilities/bcrypt.util'
 
