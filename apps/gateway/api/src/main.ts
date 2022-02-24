@@ -5,15 +5,17 @@
 
 import { Logger } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
+import helmet from 'helmet'
 
-import { loadGatewayConfiguration } from '@vnm/shared';
+import { loadConfiguration } from '@vnm/shared';
 
 import { AppModule } from './app/app.module';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+  app.use(helmet())
 
-  const config = loadGatewayConfiguration();
+  const config = loadConfiguration();
 
   const port = config.HTTP_PORT || process.env.PORT || 8000;
   await app.listen(port);

@@ -1,9 +1,9 @@
 import { NestMiddleware, Logger } from "@nestjs/common";
-import { loadGatewayConfiguration } from "@vnm/shared";
+import { GatewayConfiguration, loadConfiguration } from "@vnm/shared";
 import { createProxyMiddleware } from 'http-proxy-middleware';
 
 export class DashboardReverseProxyMiddleware implements NestMiddleware {
-  private config = loadGatewayConfiguration();
+  private config: GatewayConfiguration = loadConfiguration();
   private proxyOptions = {
     target: this.config.DASHBOARD.REVERSE_ADDRESS,
     secure: false,

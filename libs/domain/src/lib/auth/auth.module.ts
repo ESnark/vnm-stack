@@ -2,14 +2,14 @@ import { Module } from "@nestjs/common";
 import { JwtModule } from "@nestjs/jwt";
 import { PassportModule } from "@nestjs/passport";
 
-import { GatewayConfiguration, loadGatewayConfiguration } from "@vnm/shared";
+import { GatewayConfiguration, loadConfiguration } from "@vnm/shared";
 import { EntitiesModule } from "../entities/entity.module";
 
 import { AuthService } from "./auth.service";
 import { LocalStrategy } from "./strategies/local.strategy";
 import { JwtStrategy } from "./strategies/jwt.strategy";
 
-const config: GatewayConfiguration = loadGatewayConfiguration()
+const config: GatewayConfiguration = loadConfiguration()
 
 @Module({
   imports: [
