@@ -7,7 +7,7 @@ import { Logger } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import helmet from 'helmet'
 
-import { loadConfiguration } from '@vnm/shared';
+import { loadConfigJson } from '@vnm/shared';
 
 import { AppModule } from './app/app.module';
 
@@ -15,7 +15,7 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.use(helmet())
 
-  const config = loadConfiguration();
+  const config = loadConfigJson();
 
   const port = config.HTTP_PORT || process.env.PORT || 8000;
   await app.listen(port);

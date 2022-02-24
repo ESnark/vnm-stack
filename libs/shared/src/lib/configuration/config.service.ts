@@ -3,7 +3,7 @@ import { join } from 'path';
 
 import { GatewayConfiguration, MicroServiceConfiguration } from "./config.model";
 
-export const loadConfiguration = (message = '[LOAD] config.json file'): MicroServiceConfiguration | GatewayConfiguration => {
+export const loadConfigJson = (message = '[LOAD] config.json file'): MicroServiceConfiguration | GatewayConfiguration => {
   console.log(`${message}:`, `${__dirname}/environments/config.json`);
   const jsonFile = fs.readFileSync(join(__dirname, 'environments', 'config.json'), 'utf8');
 

@@ -1,13 +1,13 @@
 import { MiddlewareConsumer, Module, NestModule, RequestMethod } from "@nestjs/common";
 import { ClientsModule, Transport } from "@nestjs/microservices";
 
-import { GatewayConfiguration, loadConfiguration } from "@vnm/shared";
+import { GatewayConfiguration, loadConfigJson } from "@vnm/shared";
 
 import { DashboardController } from "./dashboard.controller";
 import { DashboardReverseProxyMiddleware } from "./dashboard.proxy";
 import { DashboardService } from "./dashboard.service";
 
-const config: GatewayConfiguration = loadConfiguration()
+const config: GatewayConfiguration = loadConfigJson()
 
 @Module({
   imports: [
