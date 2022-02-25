@@ -50,4 +50,13 @@ export class UserService {
     if (!isRefreshTokenMatching) return
     return user
   }
+
+  async setCurrentRefreshToken(refreshToken: string, id: number) {
+    const currentHashedRefreshToken = await bcryptHash(refreshToken)
+    await this.repository.update(id, { currentHashedRefreshToken })
+  }
+
+  async removeRefreshToken(id: number) {
+    await this.repository.update(id, { currentHashedRefreshToken: undefined })
+  }
 }

@@ -1,9 +1,12 @@
-import { Injectable, UnauthorizedException } from "@nestjs/common";
+import { Injectable } from "@nestjs/common";
 import { JwtService } from '@nestjs/jwt'
 
-import { User } from '@vnm/model'
+import { TokenPayload } from '@vnm/model'
+import { GatewayConfiguration, loadConfigJson } from "@vnm/shared";
 import { UserService } from '../entities/user/user.service'
 import { bcryptCompare } from '../utilities/bcrypt.util'
+
+const config: GatewayConfiguration = loadConfigJson()
 
 @Injectable()
 export class AuthService {
@@ -19,15 +22,17 @@ export class AuthService {
     return null
   }
 
-  async login(loginUser: User): Promise<any> {
-    const user = await this.userService.findOne(loginUser.email);
-    if (user) {
-      const payload = { name: user.name, sub: user.id, email: user.email, role: user.role }
-      return { access_token: this.jwtService.sign(payload) }
-    } else {
-      throw new UnauthorizedException({
-        error: 'There is no user'
-      })
-    }
+  async getJwtAccessToken(payload: TokenPayload) {
+    return this.jwtService.sign(payload, {
+      secret: config.AUTH.SECRET,
+      expiresIn: config.AUTH.EXPIRED_ON
+    })
+  }
+
+  async getJwtRefreshToken(payload: TokenPayload) {
+    return this.jwtService.sign(payload, {
+      secret: config.AUTH.REFRESH_SECRET,
+      expiresIn: config.AUTH.REFRESH_EXPIRED_ON,
+    })
   }
 }
