@@ -1,5 +1,6 @@
 import { Body, Controller, Post, Get, Put, Delete, Param, UseGuards } from '@nestjs/common'
-import { UserService, User, JwtAuthGuard } from '@vnm/domain'
+import { UserService, JwtAuthGuard } from '@vnm/domain'
+import { User } from '@vnm/model'
 
 @Controller('api/gateway/user')
 export class UserController {
