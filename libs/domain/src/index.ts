@@ -9,6 +9,7 @@ export * from './lib/auth/strategies/jwt.strategy'
 export * from './lib/auth/guards/local-auth.guard'
 export * from './lib/auth/guards/jwt-auth.guard'
 export * from './lib/auth/guards/jwt-auth-refresh.guard'
+export * from './lib/auth/auth.middleware'
 
 export * from './lib/entities/user/user.service';
 export * from './lib/entities/entity.module';

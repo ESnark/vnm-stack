@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { MiddlewareConsumer, Module, NestModule, RequestMethod } from '@nestjs/common';
 import { join } from 'path';
 import { getMetadataArgsStorage } from 'typeorm';
 
@@ -17,6 +17,11 @@ import { AppController } from './app.controller';
 import { UserController } from './user/user.controller';
 import { AuthController } from './auth/auth.controller';
 
+// Middleware
+import { AuthMiddleware } from '@vnm/domain'
+import { APP_GUARD } from '@nestjs/core';
+import { RolesGuard } from '@vnm/shared'
+
 @Module({
   imports: [
     ServeStaticModule.forRoot({
@@ -32,6 +37,23 @@ import { AuthController } from './auth/auth.controller';
     AuthModule,
   ],
   controllers: [AppController, UserController, AuthController],
-  providers: [GatewayApiAppService],
+  providers: [
+    GatewayApiAppService,
+    {
+      provide: APP_GUARD,
+      useClass: RolesGuard,
+    }
+  ],
 })
-export class AppModule {}
+export class AppModule implements NestModule {
+  configure(consumer: MiddlewareConsumer) {
+      consumer.apply(AuthMiddleware)
+        .exclude({ path: '/api/gateway/user', method: RequestMethod.POST })
+        .forRoutes(...[
+          { path: '/dashboard*', method: RequestMethod.ALL },
+          { path: '/configuration*', method: RequestMethod.ALL },
+          { path: '/back-office*', method: RequestMethod.ALL },
+          { path: '/api*', method: RequestMethod.ALL },
+        ])
+  }
+}

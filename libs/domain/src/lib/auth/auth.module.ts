@@ -9,6 +9,8 @@ import { AuthService } from "./auth.service";
 import { LocalStrategy } from "./strategies/local.strategy";
 import { JwtStrategy } from "./strategies/jwt.strategy";
 
+import { AuthMiddleware } from './auth.middleware'
+
 const config: GatewayConfiguration = loadConfigJson()
 
 @Module({
@@ -20,7 +22,7 @@ const config: GatewayConfiguration = loadConfigJson()
     }),
     EntitiesModule
   ],
-  providers: [AuthService, LocalStrategy, JwtStrategy],
-  exports: [AuthService]
+  providers: [AuthService, LocalStrategy, JwtStrategy, AuthMiddleware],
+  exports: [AuthService, AuthMiddleware]
 })
 export class AuthModule {}
