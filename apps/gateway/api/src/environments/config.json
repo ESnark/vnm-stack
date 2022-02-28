@@ -2,7 +2,9 @@
   "HTTP_PORT": 8000,
   "AUTH": {
     "SECRET": "5up3r_53cr37",
-    "EXPIRED_ON": "1d"
+    "EXPIRED_ON": "1d",
+    "REFRESH_SECRET": "super_secret",
+    "REFRESH_EXPIRED_ON": "7d"
   },
   "DASHBOARD": {
     "REVERSE_CONTEXT": "dashboard",
