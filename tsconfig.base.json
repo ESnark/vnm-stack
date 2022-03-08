@@ -17,6 +17,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@vnm/page": ["libs/page/src/index.ts"],
+      "@vnm/ui": ["libs/ui/src/index.ts"],
       "@vnm/domain": ["libs/domain/src/index.ts"],
       "@vnm/model": ["libs/model/src/index.ts"],
       "@vnm/shared": ["libs/shared/src/index.ts"]

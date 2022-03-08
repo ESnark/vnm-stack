@@ -20,6 +20,11 @@
       "label": "build:gateway-api",
       "type": "shell",
       "command": "npm run build:gateway-api"
+    },
+    {
+      "label": "build:gateway-web",
+      "type": "shell",
+      "command": "npm run build:gateway-web"
     }
   ]
 }
