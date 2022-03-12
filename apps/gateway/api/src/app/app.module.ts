@@ -21,12 +21,13 @@ import { AuthController } from './auth/auth.controller';
 import { AuthMiddleware } from '@vnm/domain'
 import { APP_GUARD } from '@nestjs/core';
 import { RolesGuard } from '@vnm/shared'
+import { LoggerMiddleware } from './middlewares/logger.middleware';
 
 @Module({
   imports: [
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, 'public'),
-      exclude: ['/api/gateway*', '/api/dashboard*', '/dashboard*', '/configuration*', '/back-office*'],
+      exclude: ['/api/auth*', '/api/gateway*', '/api/dashboard*', '/dashboard*', '/configuration*', '/back-office*'],
     }),
     TypeOrmModule.forRoot({
       ...ormConfigService.getTypeOrmConfig(),
@@ -47,8 +48,13 @@ import { RolesGuard } from '@vnm/shared'
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
-      consumer.apply(AuthMiddleware)
-        .exclude({ path: '/api/gateway/user', method: RequestMethod.POST })
+      consumer
+        .apply(LoggerMiddleware).forRoutes('*')
+        .apply(AuthMiddleware)
+        .exclude(...[
+          { path: '/api/auth/login', method: RequestMethod.POST },
+          { path: '/api/gateway/user', method: RequestMethod.POST }
+        ])
         .forRoutes(...[
           { path: '/dashboard*', method: RequestMethod.ALL },
           { path: '/configuration*', method: RequestMethod.ALL },

@@ -1,0 +1,56 @@
+{
+  "/gateway/*": {
+    "target": "http://localhost:8000",
+    "secure": false,
+    "changeOrigin": true,
+    "ws": true
+  },
+  "/api/gateway/*": {
+    "target": "http://localhost:8000",
+    "secure": false,
+    "changeOrigin": true,
+    "ws": true
+  },
+  "/api/auth/login": {
+    "target": "http://localhost:8000",
+    "secure": false,
+    "changeOrigin": true,
+    "ws": true
+  },
+  "/dashboard/*": {
+    "target": "http://localhost:8000",
+    "secure": false,
+    "changeOrigin": true,
+    "ws": true
+  },
+  "/dashboard/api/*": {
+    "target": "http://localhost:8000",
+    "secure": false,
+    "changeOrigin": true,
+    "ws": true
+  },
+  "/configuration/*": {
+    "target": "http://localhost:8000",
+    "secure": false,
+    "changeOrigin": true,
+    "ws": true
+  },
+  "/configuration/api/*": {
+    "target": "http://localhost:8000",
+    "secure": false,
+    "changeOrigin": true,
+    "ws": true
+  },
+  "/back-office/*": {
+    "target": "http://localhost:8000",
+    "secure": false,
+    "changeOrigin": true,
+    "ws": true
+  },
+  "/back-office/api/*": {
+    "target": "http://localhost:8000",
+    "secure": false,
+    "changeOrigin": true,
+    "ws": true
+  }
+}

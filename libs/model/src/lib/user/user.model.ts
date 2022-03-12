@@ -8,7 +8,7 @@ export interface User {
   currentHashedRefreshToken?: string;
 }
 
-export type LoginDto = Pick<User, 'name' | 'password'>
+export type LoginDto = Pick<User, 'email' | 'password'>
 
 export type TokenPayload = Omit<User, 'password'>
 

@@ -4,7 +4,7 @@ import { TokenPayload } from '@vnm/model'
 import { Response } from 'express';
 
 
-@Controller('auth')
+@Controller('api/auth')
 export class AuthController {
   constructor(private readonly authService: AuthService, private userService: UserService) {}
 

@@ -3,7 +3,7 @@ import { ExtractJwt, Strategy } from 'passport-jwt'
 import { PassportStrategy } from '@nestjs/passport'
 import { Injectable } from '@nestjs/common'
 
-import { UserService } from '@vnm/domain'
+import { UserService } from '../../entities/user/user.service'
 import { loadConfigJson } from '@vnm/shared'
 import { TokenPayload, User } from '@vnm/model'
 
